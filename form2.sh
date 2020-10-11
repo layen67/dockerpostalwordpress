@@ -455,6 +455,12 @@ echo '  bind_address: 127.0.0.1' | sudo tee -a /opt/postal/config/postal.yml;
 echo '  port: 8088' | sudo tee -a /opt/postal/config/postal.yml;
 echo '  ssl_port: 11443' | sudo tee -a /opt/postal/config/postal.yml;
 
+echo '' | sudo tee -a /etc/sysctl.d/99-sysctl.conf;
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf;
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf;
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf;
+sysctl -p;
+
 su postal -c 'postal restart';
 
 service nginx restart;
