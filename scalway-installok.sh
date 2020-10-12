@@ -186,7 +186,7 @@ echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED
 # RabbitMQ
 #
 rabbitmqctl add_vhost /postal
-rabbitmqctl add_user postal $domainpasspw
+rabbitmqctl add_user postal LFr37rG3r
 rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*"
 
 #
