@@ -9,7 +9,7 @@ command hostnamectl set-hostname $domainname;
 # freenom install
 apt-get update;
 apt install git -y;
-git clone https://github.com/dawierha/Freenom-dns-updater.git;
+git clone https://github.com/maxisoft/Freenom-dns-updater.git;
 cd Freenom-dns-updater;
 apt-get install -y software-properties-common;
 add-apt-repository -y ppa:deadsnakes/ppa;
