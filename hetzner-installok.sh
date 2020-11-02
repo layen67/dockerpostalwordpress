@@ -470,6 +470,7 @@ mv my.cnf mycnfold;
 wget https://raw.githubusercontent.com/layen67/dockerpostalwordpress/master/my.cnf;
 service mysql restart;
 
+command hostnamectl set-hostname $domainname;
 
 postal make-user;
 
