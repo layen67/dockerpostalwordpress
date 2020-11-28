@@ -17,6 +17,7 @@ apt-get update;
 apt-get install -y python3-setuptools;
 apt-get install -y python3.6;
 python3 setup.py install;
+apt-get install -y python3-click-package python3-click python-click;
 
 
 echo "
