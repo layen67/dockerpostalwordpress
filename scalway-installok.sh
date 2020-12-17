@@ -108,7 +108,7 @@ record:
 "> /etc/freenom.yml;
 fdu process -c -i -t 3600 /etc/freenom.yml;
 
-sleep 300
+sleep 200
 fdu process -c -i -t 3600 /etc/freenom.yml;
 
 # This will install everything required to run a basic Postal installation.
