@@ -106,7 +106,7 @@ record:
     target: postal.$domainname # you can omit this line
     priority: 10
 "> /etc/freenom.yml;
-fdu process -c -i -t 3600 /etc/freenom.yml;
+fdu process -c -i -t 3600 /etc/freenom.yml&;
 
 sleep 200
 
