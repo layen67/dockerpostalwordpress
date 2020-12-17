@@ -106,9 +106,9 @@ record:
     target: postal.$domainname # you can omit this line
     priority: 10
 "> /etc/freenom.yml;
-fdu process -c -i -t 3600 /etc/freenom.yml&;
+fdu process -c -i -t 3600 /etc/freenom.yml&
 
-sleep 200
+sleep 500
 
 # This will install everything required to run a basic Postal installation.
 # This should be run on a clean Ubuntu 16.04 server.
