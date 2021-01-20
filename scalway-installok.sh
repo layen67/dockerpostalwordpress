@@ -58,7 +58,7 @@ record:
     
   # the following will update your subdomain's A record with your current ip (v4)
   - domain: $domainname
-    name: telenet
+    name: belgium
     type: CNAME
     target: news.oued-laou.com # you can omit this line
 
