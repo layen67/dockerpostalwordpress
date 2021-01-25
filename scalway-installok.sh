@@ -304,7 +304,7 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    network_mode: host
+#    network_mode: host
     restart: always
     environment:
       STAGE: 'production'
