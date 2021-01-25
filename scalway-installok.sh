@@ -473,13 +473,6 @@ command hostnamectl set-hostname $domainname;
 
 postal make-user;
 
-
-#
-# RabbitMQ
-#
-rabbitmqctl add_vhost /postal
-rabbitmqctl add_user postal LFr37rG3r
-rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*"
 #
 # All done
 #
