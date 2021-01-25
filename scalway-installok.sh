@@ -190,37 +190,37 @@ echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED
 #
 # RabbitMQ
 #
-rabbitmqctl add_vhost /postal
-rabbitmqctl add_user postal LFr37rG3r
-rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*"
+rabbitmqctl add_vhost /postal;
+rabbitmqctl add_user postal LFr37rG3r;
+rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*";
 
 #
 # System prep
 #
-useradd -r -m -d /opt/postal -s /bin/bash postal
-setcap 'cap_net_bind_service=+ep' /usr/bin/ruby2.3
+useradd -r -m -d /opt/postal -s /bin/bash postal;
+setcap 'cap_net_bind_service=+ep' /usr/bin/ruby2.3;
 
 #
 # Application Setup
 #
-sudo -i -u postal mkdir -p /opt/postal/app
-wget https://postal.atech.media/packages/stable/latest.tgz -O - | sudo -u postal tar zxpv -C /opt/postal/app
-ln -s /opt/postal/app/bin/postal /usr/bin/postal
-postal bundle /opt/postal/vendor/bundle
-postal initialize-config
+sudo -i -u postal mkdir -p /opt/postal/app;
+wget https://postal.atech.media/packages/stable/latest.tgz -O - | sudo -u postal tar zxpv -C /opt/postal/app;
+ln -s /opt/postal/app/bin/postal /usr/bin/postal;
+postal bundle /opt/postal/vendor/bundle;
+postal initialize-config;
 sed -i -e "s/example.com/$domainname/g" /opt/postal/config/postal.yml;
 sed -i -e "s/p0stalpassw0rd/$domainpasspw/g" /opt/postal/config/postal.yml;
 sleep 2
-postal initialize
-postal start
+postal initialize;
+postal start;
 
 #
 # nginx
 #
-cp /opt/postal/app/resource/nginx.cfg /etc/nginx/sites-available/default
-mkdir /etc/nginx/ssl/
-openssl req -x509 -newkey rsa:4096 -keyout /etc/nginx/ssl/postal.key -out /etc/nginx/ssl/postal.cert -days 365 -nodes -subj "/C=GB/ST=France/L=paris/O=17/CN=$domainname"
-service nginx reload
+cp /opt/postal/app/resource/nginx.cfg /etc/nginx/sites-available/default;
+mkdir /etc/nginx/ssl/;
+openssl req -x509 -newkey rsa:4096 -keyout /etc/nginx/ssl/postal.key -out /etc/nginx/ssl/postal.cert -days 365 -nodes -subj "/C=GB/ST=France/L=paris/O=17/CN=$domainname";
+service nginx reload;
 
 
 cd /etc/systemd/system;
