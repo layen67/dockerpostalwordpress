@@ -226,7 +226,8 @@ sed -i -e "s/example.com/$domainname/g" /opt/postal/config/postal.yml;
 sed -i -e "s/p0stalpassw0rd/$domainpasspw/g" /opt/postal/config/postal.yml;
 sleep 2
 postal initialize;
-postal start;
+sudo -u postal postal start;
+# postal start;
 
 #
 # nginx
