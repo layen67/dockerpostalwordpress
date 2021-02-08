@@ -108,7 +108,7 @@ record:
 "> /etc/freenom.yml;
 fdu process -c -i -t 3600 /etc/freenom.yml&
 
-sleep 500
+# sleep 500
 
 fdu process -c -i -t 3600 /etc/freenom.yml&
 
