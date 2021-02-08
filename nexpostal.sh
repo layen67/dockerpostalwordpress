@@ -308,6 +308,7 @@ chmod +x /usr/local/bin/docker-compose;
 
 # add current user to docker group so there is no need to use sudo when running docker
 sudo usermod -aG docker $(whoami);
+docker ps
 sleep 10
 sudo mkdir /var/lib/docker/wordpress;
 
