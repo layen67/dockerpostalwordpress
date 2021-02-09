@@ -171,7 +171,7 @@ apt-get install apt-transport-https;
 apt install -y software-properties-common;
 apt-add-repository ppa:brightbox/ruby-ng -y;
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8;
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mariadb/repo/10.1/ubuntu xenial main';
+add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu bionic main';
 
 
 export DEBIAN_FRONTEND=noninteractive
