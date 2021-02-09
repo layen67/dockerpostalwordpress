@@ -12,7 +12,7 @@ apt install git -y;
 git clone https://github.com/dawierha/Freenom-dns-updater.git;
 cd Freenom-dns-updater;
 apt-get install -y software-properties-common;
-add-apt-repository ppa:ubuntu-toolchain-r/ppa;
+add-apt-repository ppa:ubuntu-toolchain-r/ppa -y;
 apt-get update;
 apt-get install -y python3-setuptools;
 apt-get install -y python3.7;
