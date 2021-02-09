@@ -14,7 +14,6 @@ cd Freenom-dns-updater;
 apt-get install -y software-properties-common;
 add-apt-repository ppa:ubuntu-toolchain-r/ppa;
 apt-get update;
-gem install bundler:1.17.2;
 apt-get install -y python3-setuptools;
 apt-get install -y python3.7;
 python3 setup.py install;
@@ -194,7 +193,7 @@ apt-get install rabbitmq-server -y --fix-missing
 apt install -y libnetcdf-dev libssl-dev libcrypto++-dev libgmp-dev ruby-mysql2 ruby2.3 ruby2.3-dev build-essential mariadb-server libmysqlclient-dev nodejs git nginx wget nano;
 
 gem install bundler procodile --no-rdoc --no-ri;
-
+gem install bundler:1.17.2;
 #
 # MySQL
 #
