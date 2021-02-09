@@ -194,6 +194,7 @@ apt install -y libnetcdf-dev libssl-dev libcrypto++-dev libgmp-dev ruby-mysql2 r
 
 gem install bundler procodile --no-rdoc --no-ri;
 gem install bundler:1.17.2;
+gem install nokogiri -v '1.10.10';
 #
 # MySQL
 #
