@@ -192,9 +192,10 @@ apt-get install rabbitmq-server -y --fix-missing
 
 apt install -y libnetcdf-dev libssl-dev libcrypto++-dev libgmp-dev ruby-mysql2 ruby2.3 ruby2.3-dev build-essential mariadb-server libmysqlclient-dev nodejs git nginx wget nano;
 
+apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev;
 gem install bundler procodile --no-rdoc --no-ri;
 gem install bundler:1.17.2;
-# gem install nokogiri -v '1.10.10';
+gem install nokogiri;
 #
 # MySQL
 #
