@@ -163,6 +163,22 @@ firewall-cmd --add-forward-port=port=465:proto=tcp:toport=25 --permanent;
 firewall-cmd --add-forward-port=port=587:proto=tcp:toport=25 --permanent;
 systemctl restart firewalld;
 
+
+sudo apt install mariadb-server libmysqlclient-dev;
+sudo systemctl start mariadb.service;
+
+sudo systemctl enable mariadb.service;
+
+sudo systemctl restart mariadb.service;
+
+#
+echo 'CREATE DATABASE `postal` CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;' | mysql -u root;
+echo 'GRANT ALL ON `postal`.* TO `postal`@`127.0.0.1` IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
+echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
+
+
+
+
 #
 # Dependencies
 #
@@ -176,24 +192,30 @@ sudo apt update;
 sudo apt install ruby2.3 ruby2.3-dev build-essential;
 
 
+wget -O- https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -;
 
-sudo apt-get install software-properties-common;
+# Cuidado con el siguiente paso, si no usas Ubuntu Bionic debes modificar por tu version
+echo "deb https://packages.erlang-solutions.com/ubuntu bionic contrib" | sudo tee /etc/apt/sources.list.d/erlang.list;
 
-sudo apt-add-repository ppa:brightbox/ruby-ng;
+sudo apt-get update;
+
+sudo apt-get install erlang;
+
+
+
+sudo sh -c 'echo "deb https://dl.bintray.com/rabbitmq/debian $(lsb_release -sc) main" >> /etc/apt/sources.list.d/rabbitmq.list';
+
+wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add -;
+
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -;
 
 sudo apt update;
 
-sudo apt install ruby2.3 ruby2.3-dev build-essential;
+sudo apt install rabbitmq-server;
+
+sudo rabbitmq-plugins enable rabbitmq_management;
 
 
-
-sudo apt-get install software-properties-common;
-
-sudo apt-add-repository ppa:brightbox/ruby-ng;
-
-sudo apt update;
-
-sudo apt install ruby2.3 ruby2.3-dev build-essential;
 
 
 
@@ -206,10 +228,6 @@ sudo rabbitmq-plugins enable rabbitmq_management;
 
 #
 # MySQL
-#
-echo 'CREATE DATABASE `postal` CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;' | mysql -u root;
-echo 'GRANT ALL ON `postal`.* TO `postal`@`127.0.0.1` IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
-echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
 
 #
 # RabbitMQ
