@@ -59,7 +59,7 @@ systemctl restart firewalld;
 #
 # Dependencies
 #
-apt update;
+sudo apt-get update -y;
 apt-get install apt-transport-https;
 apt install -y software-properties-common;
 apt-add-repository ppa:brightbox/ruby-ng -y;
@@ -68,8 +68,11 @@ add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mari
 
 
 
-sudo apt-get update -y
-
+sudo apt-get update -y;
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb;
+dpkg -i erlang-solutions_1.0_all.deb;
+sudo apt-get update -y;
+apt-get install erlang;
 ## Install prerequisites
 sudo apt-get install curl gnupg -y
 
