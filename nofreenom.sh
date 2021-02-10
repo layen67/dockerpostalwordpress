@@ -1,6 +1,6 @@
 #!/bin/sh
 read -p "Please enter domain:" domainname
-read -p "Please enter Msql password: LFr37rG3r " domainpasspw
+read -p "Please enter Msql password: ASOSsosa67 " domainpasspw
 
 command hostnamectl set-hostname $domainname;
 
@@ -94,14 +94,14 @@ gem install nokogiri;
 # MySQL
 #
 echo 'CREATE DATABASE `postal` CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;' | mysql -u root;
-echo 'GRANT ALL ON `postal`.* TO `postal`@`127.0.0.1` IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
-echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED BY "LFr37rG3r";' | mysql -u root;
+echo 'GRANT ALL ON `postal`.* TO `postal`@`127.0.0.1` IDENTIFIED BY "ASOSsosa67";' | mysql -u root;
+echo 'GRANT ALL PRIVILEGES ON `postal-%` . * to `postal`@`127.0.0.1`  IDENTIFIED BY "ASOSsosa67";' | mysql -u root;
 
 #
 # RabbitMQ
 #
 rabbitmqctl add_vhost /postal;
-rabbitmqctl add_user postal LFr37rG3r;
+rabbitmqctl add_user postal ASOSsosa67;
 rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*";
 
 #
