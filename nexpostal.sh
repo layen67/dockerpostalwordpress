@@ -166,36 +166,44 @@ systemctl restart firewalld;
 #
 # Dependencies
 #
-apt update;
-apt-get install apt-transport-https;
-apt install -y software-properties-common;
-apt-add-repository ppa:brightbox/ruby-ng -y;
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8;
-add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu bionic main';
+
+sudo apt-get install software-properties-common;
+
+sudo apt-add-repository ppa:brightbox/ruby-ng;
+
+sudo apt update;
+
+sudo apt install ruby2.3 ruby2.3-dev build-essential;
 
 
-export DEBIAN_FRONTEND=noninteractive
-apt-get update -y
-apt-get install curl gnupg -y
-curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | apt-key add -
-apt-get install apt-transport-https
-tee /etc/apt/sources.list.d/bintray.rabbitmq.list <<EOF
-deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
-deb https://dl.bintray.com/rabbitmq/debian bionic main
-EOF
-apt-get update -y
-apt-get install rabbitmq-server -y --fix-missing
 
-# until lsof -i:5672; do echo "Waiting for RabbitMQ to start..."; sleep 1; done
-# rabbitmq-plugins enable rabbitmq_management
+sudo apt-get install software-properties-common;
+
+sudo apt-add-repository ppa:brightbox/ruby-ng;
+
+sudo apt update;
+
+sudo apt install ruby2.3 ruby2.3-dev build-essential;
 
 
-apt install -y libnetcdf-dev libssl-dev libcrypto++-dev libgmp-dev ruby-mysql2 ruby2.3 ruby2.3-dev build-essential mariadb-server libmysqlclient-dev nodejs git nginx wget nano;
 
-apt-get install build-essential patch ruby-dev zlib1g-dev liblzma-dev;
-gem install bundler procodile --no-rdoc --no-ri;
-gem install bundler:1.17.2;
-gem install nokogiri;
+sudo apt-get install software-properties-common;
+
+sudo apt-add-repository ppa:brightbox/ruby-ng;
+
+sudo apt update;
+
+sudo apt install ruby2.3 ruby2.3-dev build-essential;
+
+
+
+sudo systemctl enable rabbitmq-server;
+
+sudo systemctl start rabbitmq-server;
+
+
+sudo rabbitmq-plugins enable rabbitmq_management;
+
 #
 # MySQL
 #
@@ -210,11 +218,31 @@ rabbitmqctl add_vhost /postal;
 rabbitmqctl add_user postal LFr37rG3r;
 rabbitmqctl set_permissions -p /postal postal ".*" ".*" ".*";
 
+
+
+sudo apt install curl;
+
+curl -sL https://deb.nodesource.com/setup_10.x | sudo bash;
+
+sudo apt-get install nodejs;
+
+
 #
 # System prep
 #
-useradd -r -m -d /opt/postal -s /bin/bash postal;
-setcap 'cap_net_bind_service=+ep' /usr/bin/ruby2.3;
+sudo useradd -r -m -d /opt/postal -s /bin/bash postal;
+
+sudo setcap 'cap_net_bind_service=+ep' /usr/bin/ruby2.3;
+
+
+
+sudo gem install bundler;
+
+sudo gem install procodile;
+
+sudo gem install nokogiri -v '1.7.2';
+
+
 
 #
 # Application Setup
