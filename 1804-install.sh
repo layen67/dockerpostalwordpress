@@ -49,7 +49,7 @@ firewall-cmd --add-port=11443/tcp --permanent;
 firewall-cmd --add-port=783/tcp --permanent;
 firewall-cmd --add-port=4444/tcp --permanent;
 firewall-cmd --add-port=4369/tcp --permanent;
-firewall-cmd --add-port=25672/tcp --permanent;
+firewall-cmd --add-port=5672/tcp --permanent;
 firewall-cmd --add-port=5671-5672/tcp --permanent;
 
 firewall-cmd --add-masquerade --permanent;
