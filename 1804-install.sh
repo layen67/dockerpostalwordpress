@@ -61,15 +61,15 @@ systemctl restart firewalld;
 #
 # Dependencies
 #
-apt update
-apt install -y software-properties-common
-apt-add-repository ppa:brightbox/ruby-ng -y
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.deb.sh | sudo bash
-apt update
-export DEBIAN_FRONTEND=noninteractive
-apt install -y ruby2.3 ruby2.3-dev build-essential libssl-dev mariadb-server libmysqlclient-dev nodejs git nginx wget nano
-gem install bundler procodile --no-rdoc --no-ri
+apt update;
+apt install -y software-properties-common;
+apt-add-repository ppa:brightbox/ruby-ng -y;
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8;
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.deb.sh | sudo bash;
+apt update;
+export DEBIAN_FRONTEND=noninteractive;
+apt install -y ruby2.3 ruby2.3-dev build-essential libssl-dev mariadb-server libmysqlclient-dev nodejs git nginx wget nano;
+gem install bundler procodile --no-rdoc --no-ri;
 
 #
 # MySQL
