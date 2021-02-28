@@ -65,11 +65,10 @@ apt update
 apt install -y software-properties-common
 apt-add-repository ppa:brightbox/ruby-ng -y
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
-echo 'deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.deb.sh | sudo bash
 apt update
 export DEBIAN_FRONTEND=noninteractive
-apt install -y ruby2.3 ruby2.3-dev build-essential libssl-dev mariadb-server libmysqlclient-dev rabbitmq-server nodejs git nginx wget nano
+apt install -y ruby2.3 ruby2.3-dev build-essential libssl-dev mariadb-server libmysqlclient-dev nodejs git nginx wget nano
 gem install bundler procodile --no-rdoc --no-ri
 
 #
