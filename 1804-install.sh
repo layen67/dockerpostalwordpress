@@ -217,7 +217,6 @@ services:
       CLIENT_MAX_BODY_SIZE: 300M
       DOMAINS: >-
           $domainname -> http://172.20.128.4,
-          www.$domainname -> http://172.20.128.4,
           track.postal.$domainname -> https://127.0.0.1:9443,
           click.$domainname -> https://127.0.0.1:9443,
           postal.$domainname -> https://127.0.0.1:8443
