@@ -363,7 +363,7 @@ sleep 5
 #
 #
 #
-chmod 777 /var/lib/docker/wordpress/wp-content;
+#chmod 777 /var/lib/docker/wordpress/wp-content;
 cd /etc/nginx/sites-available;
 wget https://raw.githubusercontent.com/layen67/dockerpostalwordpress/master/fast
 ln -s /etc/nginx/sites-available/fast /etc/nginx/sites-enabled/;
