@@ -2,6 +2,8 @@
 read -p "Please enter domain:" domainname
 read -p "Please enter Msql password: LFr37rG3r " domainpasspw
 
+set -e
+
 command hostnamectl set-hostname postal.$domainname;
 # This will install everything required to run a basic Postal installation.
 # This should be run on a clean Ubuntu 16.04 server.
@@ -76,8 +78,6 @@ firewall-cmd --add-forward-port=port=2525:proto=tcp:toport=25 --permanent;
 firewall-cmd --add-forward-port=port=465:proto=tcp:toport=25 --permanent;
 firewall-cmd --add-forward-port=port=587:proto=tcp:toport=25 --permanent;
 systemctl restart firewalld;
-
-set -e
 
 apt install -y software-properties-common;
 apt-add-repository ppa:brightbox/ruby-ng -y;
