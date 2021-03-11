@@ -58,52 +58,30 @@ firewall-cmd --add-forward-port=port=465:proto=tcp:toport=25 --permanent;
 firewall-cmd --add-forward-port=port=587:proto=tcp:toport=25 --permanent;
 systemctl restart firewalld;
 
-#
-# Dependencies
-#
-sudo apt-get update -y;
-apt-get install apt-transport-https;
-apt install -y software-properties-common;
-apt-add-repository ppa:brightbox/ruby-ng -y;
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8;
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mariadb/repo/10.1/ubuntu bionic main';
 
-
-
-sudo apt-get update -y;
-wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb;
-dpkg -i erlang-solutions_1.0_all.deb;
-sudo apt-get update -y;
-apt-get install erlang;
+## If sudo is not available on the system,
+## uncomment the line below to install it
+# apt-get install -y sudo
+sudo apt-get update -y
 ## Install prerequisites
-sudo apt-get install curl gnupg -y;
-
+sudo apt-get install curl gnupg -y
 ## Install RabbitMQ signing key
-curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | sudo apt-key add -;
-
+curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | sudo apt-key add -
 ## Install apt HTTPS transport
-sudo apt-get install apt-transport-https;
-
-## Add Bintray repositories that provision latest RabbitMQ and Erlang 23.x releases
+sudo apt-get install apt-transport-https
+## Add Bintray repositories that provision latest RabbitMQ and Erlang 21.x releases
 sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list <<EOF
-## Installs the latest Erlang 23.x release.
-## Change component to "erlang-22.x" to install the latest 22.x version.
+## Installs the latest Erlang 22.x release.
+## Change component to "erlang-21.x" to install the latest 21.x version.
 ## "bionic" as distribution name should work for any later Ubuntu or Debian release.
 ## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
-deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang;
-## Installs latest RabbitMQ release
-deb https://dl.bintray.com/rabbitmq/debian bionic main;
+deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
+deb https://dl.bintray.com/rabbitmq/debian bionic main
 EOF
-
 ## Update package indices
-sudo apt-get update -y;
-
+sudo apt-get update -y
 ## Install rabbitmq-server and its dependencies
-sudo apt-get install rabbitmq-server -y --fix-missing;
-
-
-
-
+sudo apt-get install rabbitmq-server -y --fix-missing
 
 
 apt update;
