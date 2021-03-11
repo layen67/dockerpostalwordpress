@@ -2,7 +2,7 @@
 read -p "Please enter domain:" domainname
 read -p "Please enter Msql password: LFr37rG3r " domainpasspw
 
-
+command hostnamectl set-hostname postal.$domainname;
 # This will install everything required to run a basic Postal installation.
 # This should be run on a clean Ubuntu 16.04 server.
 #
@@ -324,6 +324,8 @@ cd /etc/mysql;
 mv my.cnf mycnfold;
 wget https://raw.githubusercontent.com/layen67/dockerpostalwordpress/master/my.cnf;
 service mysql restart;
+
+command hostnamectl set-hostname postal.$domainname;
 
 postal make-user;
 
