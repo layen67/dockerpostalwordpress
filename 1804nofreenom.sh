@@ -43,6 +43,8 @@ sudo apt-get update -y
 ## Install rabbitmq-server and its dependencies
 sudo apt-get install rabbitmq-server -y --fix-missing
 
+rm -rf /var/lib/apt/lists/lock;
+
 #
 # Installation 
 #
