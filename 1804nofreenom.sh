@@ -61,17 +61,56 @@ systemctl restart firewalld;
 #
 # Dependencies
 #
-apt update
-apt install -y software-properties-common
-apt-add-repository ppa:brightbox/ruby-ng -y
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mariadb/repo/10.1/ubuntu bionic main'
-curl -sL https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | apt-key add -
-add-apt-repository 'deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang-22.1'
-apt update
-export DEBIAN_FRONTEND=noninteractive
-apt install -y ruby2.3 ruby2.3-dev build-essential libssl-dev mariadb-server libmysqlclient-dev rabbitmq-server nodejs git nginx wget nano
-gem install bundler procodile --no-rdoc --no-ri
+sudo apt-get update -y;
+apt-get install apt-transport-https;
+apt install -y software-properties-common;
+apt-add-repository ppa:brightbox/ruby-ng -y;
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8;
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mariadb/repo/10.1/ubuntu bionic main';
+
+
+
+sudo apt-get update -y;
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb;
+dpkg -i erlang-solutions_1.0_all.deb;
+sudo apt-get update -y;
+apt-get install erlang;
+## Install prerequisites
+sudo apt-get install curl gnupg -y;
+
+## Install RabbitMQ signing key
+curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | sudo apt-key add -;
+
+## Install apt HTTPS transport
+sudo apt-get install apt-transport-https;
+
+## Add Bintray repositories that provision latest RabbitMQ and Erlang 23.x releases
+sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list <<EOF
+## Installs the latest Erlang 23.x release.
+## Change component to "erlang-22.x" to install the latest 22.x version.
+## "bionic" as distribution name should work for any later Ubuntu or Debian release.
+## See the release to distribution mapping table in RabbitMQ doc guides to learn more.
+deb https://dl.bintray.com/rabbitmq-erlang/debian bionic erlang;
+## Installs latest RabbitMQ release
+deb https://dl.bintray.com/rabbitmq/debian bionic main;
+EOF
+
+## Update package indices
+sudo apt-get update -y;
+
+## Install rabbitmq-server and its dependencies
+sudo apt-get install rabbitmq-server -y --fix-missing;
+
+
+
+
+
+
+apt update;
+export DEBIAN_FRONTEND=noninteractive;
+apt install -y libnetcdf-dev libssl-dev libcrypto++-dev libgmp-dev ruby-mysql2 ruby2.3 ruby2.3-dev build-essential mariadb-server libmysqlclient-dev nodejs git nginx wget nano;
+
+gem install bundler procodile --no-rdoc --no-ri;
 
 #
 # MySQL
