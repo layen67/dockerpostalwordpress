@@ -201,6 +201,8 @@ setcap 'cap_net_bind_service=+ep' /usr/bin/ruby2.3
 sudo -i -u postal mkdir -p /opt/postal/app
 wget https://postal.atech.media/packages/stable/latest.tgz -O - | sudo -u postal tar zxpv -C /opt/postal/app
 ln -s /opt/postal/app/bin/postal /usr/bin/postal
+cd /opt/postal/app
+bundle update --all
 postal bundle /opt/postal/vendor/bundle
 postal initialize-config
 sed -i -e "s/example.com/$domainname/g" /opt/postal/config/postal.yml;
